@@ -1,0 +1,1 @@
+import { Section } from '@/components/ui';import { services } from '@/lib/data';export default function(){return <main><Section title='Gym Website Services' kicker='SERVICES'>{services.map(s=><div key={s.title} className='glass p-6 rounded-2xl mb-4'><h3 className='font-semibold'>{s.title}</h3><p className='text-white/70'>{s.desc}</p></div>)}</Section></main>}

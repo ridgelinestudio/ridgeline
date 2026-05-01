@@ -1,0 +1,3 @@
+import './globals.css';import { Header,Footer } from '@/components/layout';import type { Metadata } from 'next';
+export const metadata: Metadata={metadataBase:new URL('https://gymdev.co'),title:{default:'GYMDEV | Powerful Gym Websites',template:'%s | GYMDEV'},description:'GYMDEV builds conversion-focused gym websites, booking systems, and SEO growth engines.',openGraph:{title:'GYMDEV',description:'Websites that build gym brands.',images:[{url:'/og-home.jpg',alt:'ogHomeImage'}]}};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang='en'><body><Header/>{children}<Footer/></body></html>}
