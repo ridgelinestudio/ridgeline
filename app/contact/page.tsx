@@ -22,7 +22,7 @@ export default function ContactPage() {
 
   return (
     <main>
-      <Section>
+      <Section title="">
         <div className='max-w-2xl'>
           <h1 className='text-4xl md:text-5xl font-black'>Let&apos;s build something.</h1>
           <p className='text-white/70 mt-4'>Tell us about your gym and we&apos;ll put together a free homepage mockup.</p>
