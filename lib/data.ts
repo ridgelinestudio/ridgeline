@@ -1,4 +1,16 @@
-export const imageVars={heroAthleteImage:'heroAthleteImage',portfolioIronpeakImage:'portfolioIronpeakImage',portfolioBeastModeImage:'portfolioBeastModeImage',portfolioElitePerformanceImage:'portfolioElitePerformanceImage',portfolioFitnessLabImage:'portfolioFitnessLabImage',aboutFounderImage:'aboutFounderImage',testimonialAvatar1:'testimonialAvatar1',testimonialAvatar2:'testimonialAvatar2',testimonialAvatar3:'testimonialAvatar3',ogHomeImage:'ogHomeImage'};
+export const imageVars = {
+  heroAthleteImage: 'heroAthleteImage',
+  ctaAthleteImage: 'ctaAthleteImage',
+  portfolioIronpeakImage: 'portfolioIronpeakImage',
+  portfolioBeastModeImage: 'portfolioBeastModeImage',
+  portfolioElitePerformanceImage: 'portfolioElitePerformanceImage',
+  portfolioFitnessLabImage: 'portfolioFitnessLabImage',
+  aboutFounderImage: 'aboutFounderImage',
+  testimonialAvatar1: 'testimonialAvatar1',
+  testimonialAvatar2: 'testimonialAvatar2',
+  testimonialAvatar3: 'testimonialAvatar3',
+  ogHomeImage: 'ogHomeImage',
+};
 export const nav=[['/','Home'],['/services','Services'],['/portfolio','Portfolio'],['/process','Process'],['/pricing','Pricing'],['/about','About'],['/blog','Blog']];
 export const services=[{title:'Custom Gym Website Design',desc:'Brand-first websites engineered to convert trial members and PT leads.'},{title:'High Performance Development',desc:'Blazing-fast, secure builds that score high on Core Web Vitals.'},{title:'Booking & Class Scheduling',desc:'Integrated booking, waivers, automations, and CRM handoff.'},{title:'SEO & Growth Optimization',desc:'Local SEO + content strategy to rank for high-intent fitness searches.'}];
 export const portfolio=[{slug:'ironpeak-fitness',name:'Ironpeak Fitness',img:imageVars.portfolioIronpeakImage,summary:'Membership growth site.',goals:'Increase qualified leads',results:'152% lift in leads in 90 days'},{slug:'beast-mode-training',name:'Beast Mode Training',img:imageVars.portfolioBeastModeImage,summary:'Personal training funnel.',goals:'Improve booking rate',results:'2.1x consultation bookings'},{slug:'elite-performance',name:'Elite Performance',img:imageVars.portfolioElitePerformanceImage,summary:'Athlete-centric brand refresh.',goals:'Premium positioning',results:'41% increase in avg package value'},{slug:'fitness-lab',name:'Fitness Lab',img:imageVars.portfolioFitnessLabImage,summary:'Multi-location SEO and classes.',goals:'Drive local search traffic',results:'Top-3 rankings for 12 keywords'}];

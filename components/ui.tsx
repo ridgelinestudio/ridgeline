@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ReactNode } from 'react';
 
 export const Section = ({ title, kicker, children }: { title: string; kicker?: string; children: ReactNode }) => (
@@ -17,13 +16,14 @@ export const Btn = ({ href, children, secondary }: { href: string; children: Rea
 );
 
 export const Placeholder = ({ name, className = '' }: { name: string; className?: string }) => (
-  <div className={`relative overflow-hidden rounded-2xl min-h-44 ${className}`}>
-    <Image
+  <div className={`relative overflow-hidden rounded-2xl ${className}`}>
+    <img
       src={`/${name}.jpg`}
       alt={name}
-      fill
-      className='object-cover'
-      sizes='(max-width: 768px) 100vw, 50vw'
+      className='w-full h-full object-cover absolute inset-0'
+      onError={(e) => {
+        (e.target as HTMLImageElement).style.opacity = '0';
+      }}
     />
   </div>
 );
