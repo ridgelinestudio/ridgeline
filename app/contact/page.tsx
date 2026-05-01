@@ -11,7 +11,7 @@ export default function ContactPage() {
   if (state.succeeded) {
     return (
       <main>
-        <Section>
+        <Section title="">
           <div className='glass rounded-2xl p-6 w-full border border-green-400/30 bg-green-500/10 text-green-100'>
             We got it. Expect a response within 24 hours at {submittedEmail}.
           </div>
