@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{@apply bg-black text-white antialiased} 
+.glass{@apply bg-white/5 border border-white/10 backdrop-blur-xl}
+.containerx{@apply max-w-7xl mx-auto px-4 md:px-8}
