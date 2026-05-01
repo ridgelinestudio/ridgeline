@@ -1,4 +1,80 @@
 'use client';
-import { useState } from 'react';import { Section } from '@/components/ui';
-export default function(){const[s,setS]=useState<'idle'|'ok'|'err'>('idle');
-return <main><Section title='Book Your Strategy Call' kicker='CONTACT'><form className='grid md:grid-cols-2 gap-4' onSubmit={async e=>{e.preventDefault();const f=e.currentTarget as HTMLFormElement;const data=new FormData(f);try{const r=await fetch('https://formspree.io/f/your-form-id',{method:'POST',headers:{Accept:'application/json'},body:data});setS(r.ok?'ok':'err');if(r.ok)f.reset();}catch{setS('err')}}}><input required name='name' placeholder='Name' className='glass p-3 rounded-lg'/><input required name='business' placeholder='Business name' className='glass p-3 rounded-lg'/><input required type='email' name='email' placeholder='Email' className='glass p-3 rounded-lg'/><input name='websiteStatus' placeholder='Website status' className='glass p-3 rounded-lg'/><input name='services' placeholder='Services needed' className='glass p-3 rounded-lg'/><input name='budget' placeholder='Budget range' className='glass p-3 rounded-lg'/><input name='timeline' placeholder='Timeline' className='glass p-3 rounded-lg'/><textarea required name='message' placeholder='Message' className='glass p-3 rounded-lg md:col-span-2 min-h-36'/><button className='bg-accent rounded-lg py-3 md:col-span-2'>Submit</button></form>{s==='ok'&&<p className='text-green-400 mt-3'>Thanks! We received your request.</p>}{s==='err'&&<p className='text-red-400 mt-3'>Submission failed. Please try again.</p>}</Section></main>}
+
+import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { Section } from '@/components/ui';
+
+export default function ContactPage() {
+  const [state, handleSubmit] = useForm('xqenakpa');
+  const [submittedEmail, setSubmittedEmail] = useState('your email');
+
+  if (state.succeeded) {
+    return (
+      <main>
+        <Section title="">
+          <div className='glass rounded-2xl p-6 w-full border border-green-400/30 bg-green-500/10 text-green-100'>
+            We got it. Expect a response within 24 hours at {submittedEmail}.
+          </div>
+        </Section>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <Section>
+        <div className='max-w-2xl'>
+          <h1 className='text-4xl md:text-5xl font-black'>Let&apos;s build something.</h1>
+          <p className='text-white/70 mt-4'>Tell us about your gym and we&apos;ll put together a free homepage mockup.</p>
+          <div className='mt-5 flex flex-wrap gap-3 text-sm'>
+            <span className='glass rounded-full px-4 py-2 text-white/80'>Free mockup, no commitment</span>
+            <span className='glass rounded-full px-4 py-2 text-white/80'>Response within 24 hours</span>
+          </div>
+        </div>
+
+        <form
+          onSubmit={(e) => {
+            const form = e.currentTarget;
+            const emailValue = (new FormData(form).get('email') as string) || 'your email';
+            setSubmittedEmail(emailValue);
+            handleSubmit(e);
+          }}
+          className='grid gap-4 mt-8 max-w-2xl'
+        >
+          <div>
+            <label htmlFor='name' className='text-white/60 text-sm mb-1 block'>Name</label>
+            <input id='name' name='name' required className='glass p-4 rounded-xl w-full' />
+            <ValidationError prefix='Name' field='name' errors={state.errors} />
+          </div>
+
+          <div>
+            <label htmlFor='business' className='text-white/60 text-sm mb-1 block'>Business name</label>
+            <input id='business' name='business' required className='glass p-4 rounded-xl w-full' />
+            <ValidationError prefix='Business name' field='business' errors={state.errors} />
+          </div>
+
+          <div>
+            <label htmlFor='email' className='text-white/60 text-sm mb-1 block'>Email</label>
+            <input id='email' type='email' name='email' required className='glass p-4 rounded-xl w-full' />
+            <ValidationError prefix='Email' field='email' errors={state.errors} />
+          </div>
+
+          <div>
+            <label htmlFor='website' className='text-white/60 text-sm mb-1 block'>Current website URL</label>
+            <input id='website' name='website' placeholder="Leave blank if you don't have one" className='glass p-4 rounded-xl w-full' />
+          </div>
+
+          <div>
+            <label htmlFor='message' className='text-white/60 text-sm mb-1 block'>What are you looking for?</label>
+            <textarea id='message' name='message' required className='glass p-4 rounded-xl w-full min-h-36' />
+            <ValidationError prefix='Message' field='message' errors={state.errors} />
+          </div>
+
+          <button type='submit' disabled={state.submitting} className='w-full bg-accent rounded-xl py-4 font-semibold text-black'>
+            {state.submitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </form>
+      </Section>
+    </main>
+  );
+}
