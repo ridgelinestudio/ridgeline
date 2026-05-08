@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Btn, Section } from '@/components/ui';
-import { portfolio, services, testimonials, imageVars } from '@/lib/data';
+import { portfolio, services, imageVars } from '@/lib/data';
 
 export default function Home() {
   const servicesRef = useRef(null);
@@ -125,17 +125,6 @@ export default function Home() {
               <h3 className='font-semibold mt-3'>{p.name}</h3>
               <p className='text-sm text-white/70'>{p.summary}</p>
             </Link>
-          ))}
-        </div>
-      </Section>
-
-      <Section kicker='WHAT OUR CLIENTS SAY' title='Results that speak for themselves.'>
-        <div className='grid md:grid-cols-3 gap-4'>
-          {testimonials.map((t, i) => (
-            <div key={i} className='glass rounded-2xl p-8'>
-              <p className='italic text-white/90 text-lg'>“{t.quote}”</p>
-              <p className='text-white/40 text-sm mt-4'>{t.industry}</p>
-            </div>
           ))}
         </div>
       </Section>
